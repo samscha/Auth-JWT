@@ -4,12 +4,18 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 const routes = require('./routes');
+const { mongodbAuth } = require('./config.js');
+const { user, pass, authSource } = mongodbAuth;
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/auth');
+mongoose.connect('mongodb://localhost/auth', {
+  user,
+  pass,
+  authSource,
+});
 
 const corsOptions = {
   origin: 'http://localhost:3000',
-  credentials: true
+  credentials: true,
 };
 
 const server = express();
