@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 const routes = require('./routes');
-const { mongodbAuth } = require('./config.js');
-const { user, pass, authSource } = mongodbAuth;
+const { user, pass, authSource } = require('./mongodbAuth.js');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/auth', {
   user,
